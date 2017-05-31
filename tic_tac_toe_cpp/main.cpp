@@ -15,7 +15,7 @@ using namespace std;
 // function prototypes
 void checkWinner(bool &, char [], int, string &, string &);
 void askPlayerNames(string &, string &);
-void printBoard();
+void printBoard(string, string, char []);
 
 int main() {
   // initialize variables
@@ -24,8 +24,7 @@ int main() {
   char boardArray[BOARD_ARRAY_SIZE] = {'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'};
   string player1Name, player2Name;
 
-  // checkWinner(winner, boardArray, BOARD_ARRAY_SIZE, player1Name, player2Name);
-  printBoard();
+  checkWinner(winner, boardArray, BOARD_ARRAY_SIZE, player1Name, player2Name);
   return 0;
 }
 
@@ -34,19 +33,77 @@ void checkWinner(bool &winner, char boardArray [], int size, string &player1Name
   // Keep looping till winner is decided
   while (!winner) {
     askPlayerNames(player1Name, player2Name);
+    printBoard(player1Name, player2Name, boardArray);
     winner = true;
   }
 }
 
-void printBoard() {
-  cout << setw(10) << "TIC TAC TOE" << endl << endl;
-  cout << setw(10) << "| - - - - - |" << endl;
-  cout << setw(10) << "| 1 | 2 | 3 |" << endl;
-  cout << setw(10) << "| - - - - - |" << endl;
-  cout << setw(10) << "| 4 | 5 | 6 |" << endl;
-  cout << setw(10) << "| - - - - - |" << endl;
-  cout << setw(10) << "| 7 | 8 | 9 |" << endl;
-  cout << setw(10) << "| - - - - - |" << endl;
+void printBoard(string player1Name, string player2Name, char boardArray []) {
+  // Check the value inside the array and output the correct values
+  // So there's no need to recreate stuff.
+  cout << string( 100, '\n' );
+  cout << "TIC TAC TOE" << endl << endl;
+  cout << "| - - - - - |" << endl;
+  cout << "| ";
+  if (boardArray[0] != 'o') {
+    cout << boardArray[0];
+  } else {
+    cout << "1";
+  }
+  cout << " | ";
+  if (boardArray[1] != 'o') {
+    cout << boardArray[1];
+  } else {
+    cout << "2";
+  }
+  cout << " | ";
+  if (boardArray[2] != 'o') {
+    cout << boardArray[2];
+  } else {
+    cout << "3";
+  }
+  cout << " |\n";
+  cout << "| - - - - - |" << endl;
+  cout << "| ";
+  if (boardArray[3] != 'o') {
+    cout << boardArray[3];
+  } else {
+    cout << "4";
+  }
+  cout << " | ";
+  if (boardArray[4] != 'o') {
+    cout << boardArray[4];
+  } else {
+    cout << "5";
+  }
+  cout << " | ";
+  if (boardArray[5] != 'o') {
+    cout << boardArray[5];
+  } else {
+    cout << "6";
+  }
+  cout << " |\n";
+  cout << "| - - - - - |" << endl;
+  cout << "| ";
+  if (boardArray[6] != 'o') {
+    cout << boardArray[6];
+  } else {
+    cout << "7";
+  }
+  cout << " | ";
+  if (boardArray[7] != 'o') {
+    cout << boardArray[7];
+  } else {
+    cout << "8";
+  }
+  cout << " | ";
+  if (boardArray[8] != 'o') {
+    cout << boardArray[8];
+  } else {
+    cout << "9";
+  }
+  cout << " |\n";
+  cout << "| - - - - - |" << endl;
 }
 
 void askPlayerNames(string &player1Name, string &player2Name) {
