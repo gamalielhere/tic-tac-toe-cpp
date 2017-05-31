@@ -9,11 +9,13 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <iomanip>
 using namespace std;
 
 // function prototypes
 void checkWinner(bool &, char [], int, string &, string &);
 void askPlayerNames(string &, string &);
+void printBoard();
 
 int main() {
   // initialize variables
@@ -22,8 +24,8 @@ int main() {
   char boardArray[BOARD_ARRAY_SIZE] = {'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'};
   string player1Name, player2Name;
 
-  checkWinner(winner, boardArray, BOARD_ARRAY_SIZE, player1Name, player2Name);
-
+  // checkWinner(winner, boardArray, BOARD_ARRAY_SIZE, player1Name, player2Name);
+  printBoard();
   return 0;
 }
 
@@ -32,10 +34,19 @@ void checkWinner(bool &winner, char boardArray [], int size, string &player1Name
   // Keep looping till winner is decided
   while (!winner) {
     askPlayerNames(player1Name, player2Name);
-    cout << "First player is: " << player1Name << endl;
-    cout << "Second player is: " << player2Name << endl;
     winner = true;
   }
+}
+
+void printBoard() {
+  cout << setw(10) << "TIC TAC TOE" << endl << endl;
+  cout << setw(10) << "| - - - - - |" << endl;
+  cout << setw(10) << "| 1 | 2 | 3 |" << endl;
+  cout << setw(10) << "| - - - - - |" << endl;
+  cout << setw(10) << "| 4 | 5 | 6 |" << endl;
+  cout << setw(10) << "| - - - - - |" << endl;
+  cout << setw(10) << "| 7 | 8 | 9 |" << endl;
+  cout << setw(10) << "| - - - - - |" << endl;
 }
 
 void askPlayerNames(string &player1Name, string &player2Name) {
