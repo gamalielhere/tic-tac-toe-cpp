@@ -163,10 +163,11 @@ void getPlayerAnswer(bool &currentTurn, char boardArray [],
         inputLength = userInput.length();
         counter = 0;
 
+      // Convert character to int.
       // Check if input is less than 0 or greater than 8
-      } else if (userInput[counter] < 0 && userInput[counter] > 8) {
+      } else if ((userInput[counter] - '0') < 0 || (userInput[counter] - '0') > 8) {
         // Prompt user and fetch input again.
-        cout << "This number is less than 0 or greater than 8. Try again.\n";
+        cout << "This number is less than 0 or greater than 8. Please input number from 0-8.\n";
         getline(cin, userInput);
         inputLength = userInput.length();
         counter = 0;
