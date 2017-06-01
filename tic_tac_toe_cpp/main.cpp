@@ -60,7 +60,7 @@ void runGame(bool &winner, char boardArray [],
   int size, string &player1Name, string &player2Name,
   bool &currentTurn, char &userMark, int &freeBox) {
 
-  char playAgain = 'y';
+  string playAgain = "y";
   bool gameEnd = false;
   // Keep looping till winner is decided
   askPlayerNames(player1Name, player2Name);
@@ -68,13 +68,24 @@ void runGame(bool &winner, char boardArray [],
     checkWinner(winner, boardArray, size, player1Name, player2Name, currentTurn, userMark, freeBox);
     // Prompt user to play again.
     cout << "Play again? y/n ";
-    cin >> playAgain;
-    if (playAgain == 'y') {
-      gameEnd = true;
-    } else {
+    getline(cin, playAgain);
+
+    if (playAgain == "y") {
+      // Reset to the default values
+
+      for (int i = 0; i < size; i++) {
+        boardArray[i] = 'a';
+      }
+      winner = false;
+      currentTurn = true;
+      userMark = 'X';
       gameEnd = false;
+      freeBox = size;
+
+    } else {
+      gameEnd = true;
     }
-  } while(gameEnd);
+  } while(!gameEnd);
 }
 
 void checkWinner(bool &winner, char boardArray [],
@@ -131,10 +142,10 @@ void getPlayerAnswer(bool &currentTurn, char boardArray [],
 
   // Check who's turn it currently is. Prompt correct user.
   if (currentTurn == true) {
-    cout << "It's " << player1Name << "'s' turn. \n";
+    cout << "It's " << player1Name << "'s' turn. You are: '" << userMark << "'\n";
     cout << "Enter the number of the box you want to mark.\n";
   } else {
-    cout << "It's " << player2Name << "'s' turn. \n";
+    cout << "It's " << player2Name << "'s' turn. You are: '" << userMark << "'\n";
     cout << "Enter the number of the box you want to mark.\n";
   }
 
@@ -193,6 +204,8 @@ void getPlayerAnswer(bool &currentTurn, char boardArray [],
 
       emptyBox = false;
     }
+
+    userNumber = 0;
   }
 }
 
@@ -262,7 +275,7 @@ void printBoard(string player1Name, string player2Name, char boardArray []) {
     cout << "8";
   }
   cout << " |\n";
-  cout << "| - - - - - |" << endl;
+  cout << "| - - - - - |\n\n";
 }
 
 void askPlayerNames(string &player1Name, string &player2Name) {
