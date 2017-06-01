@@ -71,10 +71,10 @@ void runGame(bool &winner, char boardArray [],
     getline(cin, playAgain);
 
     if (playAgain == "y") {
-      // Reset to the default values
 
+      // Reset to the default values
       for (int i = 0; i < size; i++) {
-        boardArray[i] = 'a';
+        boardArray[i] = 'a'; // Loop through array and reassign every value.
       }
       winner = false;
       currentTurn = true;
