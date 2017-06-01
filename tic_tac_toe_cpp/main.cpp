@@ -33,7 +33,7 @@ int main() {
   // Call funtions
   intro();
   runGame(winner, boardArray, BOARD_ARRAY_SIZE, player1Name, player2Name, currentTurn, userMark, freeBox);
-  cout << "Press any key to continue... \n";
+  cout << "Press the <ENTER> key to continue... \n";
   system("read");
   return 0;
 }
@@ -51,7 +51,7 @@ void intro() {
   cout << "************************\n";
   cout << "************************\n";
   cout << "************************\n\n";
-  cout << "Press any key to continue... \n";
+  cout << "Press the <ENTER> key to continue... \n";
   system("read");
 }
 
@@ -293,6 +293,7 @@ void askPlayerNames(string &player1Name, string &player2Name) {
       cout << "That is not a name, please input string only. \n"; // prompt user
 
       // reset variables
+      getline(cin, player1Name); // get input
       nameLength = player1Name.length();
       counter = 0;
     } else {
@@ -313,6 +314,7 @@ void askPlayerNames(string &player1Name, string &player2Name) {
       cout << "That is not a name, please input string only. \n"; // prompt user
 
       // reset variables
+      getline(cin, player2Name); // get input
       nameLength = player2Name.length();
       counter = 0;
     } else {
